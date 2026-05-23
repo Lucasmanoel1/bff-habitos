@@ -14,8 +14,8 @@ public class GlobalExceptionsHandler {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(ConflictExeception.class)
-    public ResponseEntity<String> handleConflictException(ConflictExeception exeception){
+    @ExceptionHandler(ConflictException.class)
+    public ResponseEntity<String> handlerConflictException(ConflictException exeception){
         return new ResponseEntity<>(exeception.getMessage(), HttpStatus.CONFLICT);
     }
 
@@ -23,9 +23,9 @@ public class GlobalExceptionsHandler {
     public ResponseEntity<String> handleUnauthorizedException(UnauthorizedException exception){
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.UNAUTHORIZED);
     }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<String> handlerIllegalArgumentException(IllegalArgumentException exception){
-        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleGenericException(Exception exception){
+        return new ResponseEntity<>("Erro interno: " + exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 }

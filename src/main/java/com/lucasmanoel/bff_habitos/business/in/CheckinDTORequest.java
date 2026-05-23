@@ -1,4 +1,6 @@
 package com.lucasmanoel.bff_habitos.business.in;
 
-public class CheckinDTORequest {
+import java.time.LocalDate;
+
+public record CheckinDTORequest(LocalDate data) {
 }
